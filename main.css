@@ -1,5 +1,6 @@
 body {
-    background-color: #ECE9E6
+    background-color: #eef9ff;
+    font-family: helvetica, sans-serif;
 }
 
 .wrapper{
@@ -33,6 +34,7 @@ body {
 
 .header h1 {
     position: relative;
+    font-family: helvetica, sans-serif;
     font-size: 24px;
     top: 18px;
     left: 10px;

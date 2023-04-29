@@ -11,6 +11,11 @@ function switchChart() {
 }
 
 var arrayMe = false;
+var bgc = "#eef9ff";
+var color_one = "#C24F3D"; //distillate -- currently red
+var color_two = "#913DC2"; //gas -- currently purple
+var color_three = "#3DB0C2"; //hydro -- currently blue
+var color_four = "#6EC23D"; //wind -- currently green
 /*
 The purpose of this demo is to demonstrate how multiple charts on the same page
 can be linked through DOM and Highcharts events and API methods. It takes a
@@ -305,7 +310,7 @@ mouse/touch event handler to bind the charts together.
       Highcharts.chart(chartDivBarh, {
         chart: {
           type: 'bar',
-          backgroundColor: '#ECE9E6',
+          backgroundColor: bgc,
           height: '50%'
         },
         title: {
@@ -326,11 +331,14 @@ mouse/touch event handler to bind the charts together.
         plotOptions: {
           bar: {
             colorByPoint: true,
-            colors: ['#437607', '#4582B4', '#FDB462', '#F35020', '#121212'],
+            colors: [color_four, color_three, color_two, color_one, '#121212'],
             dataLabels: {
               enabled: true
             },
           }
+        },
+        tooltip: {
+          enabled: false
         },
         legend: {
           enabled: false
@@ -352,7 +360,7 @@ mouse/touch event handler to bind the charts together.
       Highcharts.chart(chartDivPie, {
         chart: {
           type: 'pie',
-          backgroundColor: '#ECE9E6',
+          backgroundColor: bgc,
         },
         title: {
           text: 'Total'
@@ -360,7 +368,7 @@ mouse/touch event handler to bind the charts together.
         plotOptions: {
           pie: {
             borderColor: '#000000',
-            colors: ['#437607', '#4582B4', '#FDB462', '#F35020', '#121212'],
+            colors: [color_four, color_three, color_two, color_one, '#121212'],
             size: '50%',
             innerSize: '50%'
           }
@@ -380,7 +388,7 @@ mouse/touch event handler to bind the charts together.
         chart: {
           type: 'area',
           height: '40%',
-          backgroundColor: '#ECE9E6'
+          backgroundColor: bgc
         },
         title: {
           text: 'Generation MW',
@@ -469,25 +477,25 @@ mouse/touch event handler to bind the charts together.
           data: activity[5]['history']['data'],
           pointStart: activity[5]['history']['start'] * 1000,
           pointInterval: 300 * 1000,
-          color: '#437607'
+          color: color_four
         }, {
           name: 'Hydro',
           data: activity[3]['history']['data'],
           pointStart: activity[3]['history']['start'] * 1000,
           pointInterval: 300 * 1000,
-          color: '#4582B4'
+          color: color_three
         }, {
           name: 'Gas (CCGT)',
           data: activity[2]['history']['data'],
           pointStart: activity[2]['history']['start'] * 1000,
           pointInterval: 300 * 1000,
-          color: '#FDB462'
+          color: color_two
         }, {
           name: 'Distillate',
           data: activity[1]['history']['data'],
           pointStart: activity[1]['history']['start'] * 1000,
           pointInterval: 300 * 1000,
-          color: '#F35020'
+          color: color_one
         }, {
           name: 'Black Coal',
           data: activity[0]['history']['data'],
@@ -532,7 +540,7 @@ mouse/touch event handler to bind the charts together.
               spacingTop: 20,
               spacingBottom: 20,
               height: '20%',
-              backgroundColor: '#ECE9E6'
+              backgroundColor: bgc
           },
           title: {
               text: 'Price $/MWH',
@@ -593,7 +601,7 @@ mouse/touch event handler to bind the charts together.
             data: priceset['history']['data'],
             name: priceset['id'],
             type: 'line',
-            color: '#C74523',
+            color: color_one,
             fillOpacity: 0.3,
             tooltip: {
               valuePrefix: '$',
@@ -625,7 +633,7 @@ mouse/touch event handler to bind the charts together.
               spacingTop: 20,
               spacingBottom: 20,
               height: '20%',
-              backgroundColor: '#ECE9E6'
+              backgroundColor: bgc
           },
           title: {
               text: 'Temperature °F',
@@ -682,7 +690,7 @@ mouse/touch event handler to bind the charts together.
             data: tempset['history']['data'],
             name: tempset['id'],
             type: 'line',
-            color: '#C74523',
+            color: color_one,
             fillOpacity: 0.3,
             tooltip: {
               valueSuffix: ' degrees'
