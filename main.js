@@ -419,10 +419,22 @@ mouse/touch event handler to bind the charts together.
             };
           },
           formatter: function() {
-            return Date(this.x*10000).toLocaleString('en-us',{weekday:"long",month:"long",day:"short",timestyle:"Short"})
+            let options = {
+              dateStyle: "medium", 
+              timeStyle: "short", 
+              //timeZone: "America/New_York" //8
+              timeZone: "UTC"
+            }
+            return new Date(this.x).toLocaleString('en-us',options)
           },
+          borderWidth: 0,
+          backgroundColor: 'none',
           shadow: false,
           shared: true,
+          //followPointer: false,
+          style: {
+            fontSize: '18px'
+          },
         },
         navigation: {
           buttonOptions: {
